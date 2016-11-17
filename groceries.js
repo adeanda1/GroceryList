@@ -42,8 +42,8 @@ function removeParentListItem()
   var mom = this.parentNode;
   var grandma = mom.parentNode;
   grandma.removeChild(mom);
-  //var itemRemove = mom.firstChild.textContent;
-  //var itemIndex = myList.splice(itemIndex, 1);
+  var itemRemove = mom.firstChild.textContent;
+  var itemIndex = myList.splice(itemIndex, 1);
 }
 
 function setCookie(cname, cvalue, exdays) {
