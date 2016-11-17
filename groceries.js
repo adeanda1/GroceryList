@@ -1,24 +1,49 @@
 
 //courtesy of w3schools, from: http://www.w3schools.com/js/js_cookies.asp
+var myList = []
+
 
 function addItem()
 {
-  var input = document.getElementById("newItem").value;
-  var list = document.getElementById("listDisplay");
-  var item = document.createElement("li");
-  var itemName = document.createTextNode(input);
-  item.appendChild(itemName);
-  document.getElementById("newItem").value = "";
-  var btnClose = document.createElement("button");
-  btnClose.classList.add("btn");
-  btnClose.classList.add("btn-danger");
-  btnClose.classList.add("btn-xs");
-  var iconClose = document.createElement("span");
-iconClose.classList.add("glyphicon");
-iconClose.classList.add("glyphicon-remove");
-btnClose.appendChild(iconClose);
-item.appendChild(btnClose);
-list.appendChild(item);
+  var input = document.getElementById("newItem").value ;
+
+  var index = myList.indexOf(input);
+  //myList.push(input);
+   if (index == -1) //not in the list, just add, to avoid doubles
+   {
+    myList.push(input);
+
+    var list = document.getElementById("listDisplay");
+    var item = document.createElement("li");
+    var itemName = document.createTextNode(input);
+    item.appendChild(itemName);
+    document.getElementById("newItem").value = "";
+    var btnClose = document.createElement("button");
+    btnClose.classList.add("btn");
+    btnClose.classList.add("btn-danger");
+    btnClose.classList.add("btn-xs");
+    btnClose.addEventListener("click", removeParentListItem);
+
+    var iconClose = document.createElement("span");
+    iconClose.classList.add("glyphicon");
+    iconClose.classList.add("glyphicon-remove");
+    btnClose.appendChild(iconClose);
+    item.appendChild(btnClose);
+    list.appendChild(item);
+   }
+
+
+
+
+}
+
+function removeParentListItem()
+{
+  var mom = this.parentNode;
+  var grandma = mom.parentNode;
+  grandma.removeChild(mom);
+  //var itemRemove = mom.firstChild.textContent;
+  //var itemIndex = myList.splice(itemIndex, 1);
 }
 
 function setCookie(cname, cvalue, exdays) {
