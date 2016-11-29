@@ -1,10 +1,29 @@
 
 //courtesy of w3schools, from: http://www.w3schools.com/js/js_cookies.asp
+
+
+
+
 var myList = []
 
+function saveList()
+{
+  var assign
+  assign = myList.toString();
+  setCookie("food", assign, 3);
+}
+
+function clearList()
+{
+   myList = [];
+   var list = document.getElementById("listDisplay");
+   list.innerHTML = '';
+}
 
 function addItem()
 {
+
+
   var input = document.getElementById("newItem").value ;
 
   var index = myList.indexOf(input);
